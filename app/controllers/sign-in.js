@@ -20,9 +20,6 @@ export default Controller.extend({
             .then(user => {
               resolve(user);
             })
-            .then(() => {
-              this.set("currentUser.user", this.get("emailValue"));
-            })
             .catch(err => {
               // eslint-disable-next-line no-console
               console.log(err);

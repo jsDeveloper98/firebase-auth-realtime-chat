@@ -14,8 +14,8 @@ li {
 }
 
 .logout-btn {
-  bottom: 20px;
-  right: 20px;
+  top: 9px;
+  right: 0;
 }
 
 .private-chat-section {
@@ -28,7 +28,7 @@ li {
 }
 
 .private-chat-section-message {
-  min-height: calc(100vh - 88px);
+  height: calc(100vh - 88px);
   background-color: #a8a8a8;
 }
 
