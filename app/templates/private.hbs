@@ -1,0 +1,18 @@
+<div class="private-chat-section position-relative">
+    <div class="private-chat-section-cont container pt-3 pb-3">
+        <div class="private-chat-section-message">
+            <div id="messageBox" class="private-chat-section-message-box w-100 pt-2 pb-2 pl-4 pr-4">
+                {{#each messages as |message|}}
+                    <li class="message-title d-flex align-items-center">{{message.user}} : {{message.title}}</li>
+                {{/each}}
+            </div>
+            <div class="private-chat-section-send-box d-flex align-items-center w-100 pl-5 pr-5">
+                {{input key-up=(action 'addMessage') value=message placeholder='Write a message...' type="text" class="form-control"}}
+            </div>
+        </div>
+    </div>
+    {{bs-button class='logout-btn position-absolute' defaultText="Logout" type="dark" onClick=(action "logout")}}
+</div>
+
+
+{{outlet}}

@@ -1,0 +1,19 @@
+<div class="container pt-5 d-flex justify-content-center">
+    <div class="form-container">
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                {{input autocomplete='off' value=emailValue type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"}}
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                {{input autocomplete='off' value=passwordValue type="password" class="form-control" id="exampleInputPassword1"}}
+            </div>
+            <button {{action 'signIn'}} type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+    </div>
+</div>
+
+{{outlet}}
