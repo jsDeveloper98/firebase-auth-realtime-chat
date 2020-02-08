@@ -13,6 +13,10 @@ export default Route.extend(RealtimeRouteMixin, {
     }
   },
 
+  model() {
+    return this.store.query("message", { orderBy: "title" });
+  }
+
   // model() {
   //   return RSVP.hash({
   //     messages: this.store.query("message", { orderBy: "title" }),
@@ -27,11 +31,7 @@ export default Route.extend(RealtimeRouteMixin, {
   //   ]);
   // },
 
-  model() {
-    return this.store.query("message", { orderBy: "title" });
-  },
-
-  setupController(controller, model) {
-    controller.setProperties(model);
-  }
+  // setupController(controller, model) {
+  //   controller.setProperties(model);
+  // }
 });
