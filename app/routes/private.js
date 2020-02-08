@@ -18,18 +18,23 @@ export default Route.extend(RealtimeRouteMixin, {
   }
 
   // model() {
-  //   return RSVP.hash({
+  //   return new RSVP.hash({
   //     messages: this.store.query("message", { orderBy: "title" }),
   //     users: this.store.query("user", { orderBy: "email" })
+  //   }).then(res => {
+  //     console.log(res);
+  //     return res;
   //   });
-  // },
+  // }
 
   // model() {
   //   return RSVP.Promise.all([
-  //     this.store.query("message", { orderBy: "title" }),
-  //     this.store.query("user", { osderBy: "email" })
-  //   ]);
-  // },
+  //     this.get("store").query("message", { orderBy: "title" }),
+  //     this.get("store").query("user", { osderBy: "email" })
+  //   ]).then(res => {
+  //     console.log(res);
+  //   });
+  // }
 
   // setupController(controller, model) {
   //   controller.setProperties(model);
