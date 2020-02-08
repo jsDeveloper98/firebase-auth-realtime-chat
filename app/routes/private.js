@@ -10,6 +10,7 @@ export default Route.extend(RealtimeRouteMixin, {
       this.transitionTo("sign-in");
     }
   },
+  // return this.get("store").query("user", { orderBy: "email" });
 
   model() {
     return this.get("store").query("message", { orderBy: "title" });

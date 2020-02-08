@@ -8,10 +8,6 @@ export default Controller.extend({
   emailValue: "",
   passwordValue: "",
 
-  init() {
-    this._super(...arguments);
-  },
-
   signUp(emailValue, passwordValue) {
     this.get("firebaseApp")
       .auth()
@@ -20,7 +16,8 @@ export default Controller.extend({
           .createUserWithEmailAndPassword(emailValue, passwordValue)
           .then(res => {
             const user = this.get("store").createRecord("user", {
-              email: res.user.email
+              email: res.user.email,
+              online: false
             });
             user.set("id", res.user.uid);
             user.save();

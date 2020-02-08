@@ -12,6 +12,14 @@
         </div>
     </div>
     {{bs-button class='logout-btn position-absolute' defaultText="Logout" type="dark" onClick=(action "logout")}}
+    <div class="users-list">
+        {{#each users as |user|}}
+            <div class="users-list-item">
+                {{user.email}}
+                <span class="{{if user.online ' online'}}"></span>
+            </div>
+        {{/each}}
+    </div>
 </div>
 
 

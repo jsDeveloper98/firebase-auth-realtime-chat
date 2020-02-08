@@ -55,8 +55,48 @@ li {
   padding-bottom: 50px !important;
 }
 
+.users-list {
+  position: absolute;
+  right: 0;
+  top: 72px;
+  width: 300px;
+  background-color: #a8a8a8;
+  height: calc(100vh - 88px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.users-list-item {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  padding-left: 30px;
+  align-items: center;
+  border-top: 1px solid rgb(207, 207, 207);
+  border-bottom: 1px solid rgb(207, 207, 207);
+  margin-bottom: -1px;
+  position: relative;
+}
+
+.online {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: green;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
 @media only screen and (max-width: 576px) {
   .private-chat-section-cont {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1210px) {
+  .users-list {
+    display: none;
   }
 }
