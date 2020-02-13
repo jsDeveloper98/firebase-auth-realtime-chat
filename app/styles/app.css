@@ -20,7 +20,7 @@ li {
 
 .private-chat-section {
   min-height: calc(100vh - 56px);
-  background-color: #999898;
+  background-color: #302e2e
 }
 
 .private-chat-section-cont {
@@ -29,20 +29,36 @@ li {
 
 .private-chat-section-message {
   height: calc(100vh - 88px);
-  background-color: #a8a8a8;
+  background-color: #595757;
+  border-radius: 2px;
+  color: #dedede;
 }
 
 .private-chat-section-message-box {
   min-height: calc(100vh - 165px);
-  border-left: 1px solid rgb(207, 207, 207);
-  border-right: 1px solid rgb(207, 207, 207);
-  border-top: 1px solid rgb(207, 207, 207);
+  border-top: 1px solid #787878;
+  border-left: 1px solid #787878;
+  border-right: 1px solid #787878;
   word-break: break-all;
 }
 
 .private-chat-section-send-box {
   height: 77px;
-  border: 1px solid rgb(207, 207, 207);
+  border: 1px solid #787878;
+}
+
+.private-chat-section-send-box input{
+  width: 100%;
+  height: 40px;
+  padding: 0 20px;
+  background-color: #6e6e6e;
+  border: none;
+  outline: none;
+  color: #dedede;
+}
+
+.private-chat-section-send-box input::placeholder{
+  color: #b0b0b0;
 }
 
 .message-title {
@@ -60,21 +76,23 @@ li {
   right: 0;
   top: 72px;
   width: 300px;
-  background-color: #a8a8a8;
+  background-color: #595757;
   height: calc(100vh - 88px);
   display: flex;
   align-items: center;
   flex-direction: column;
+  border-radius: 2px
 }
 
 .users-list-item {
+  color: #dedede;
   height: 40px;
   width: 100%;
   display: flex;
   padding-left: 30px;
   align-items: center;
-  border-top: 1px solid rgb(207, 207, 207);
-  border-bottom: 1px solid rgb(207, 207, 207);
+  border-top: 1px solid #787878;
+  border-bottom: 1px solid #787878;
   margin-bottom: -1px;
   position: relative;
 }
@@ -87,6 +105,15 @@ li {
   position: absolute;
   right: 10px;
   top: 15px;
+}
+
+::-webkit-scrollbar {
+    width: 0.9em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #787878;
+    outline: 1px solid #787878;
 }
 
 @media only screen and (max-width: 576px) {

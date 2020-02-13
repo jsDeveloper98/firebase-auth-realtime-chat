@@ -23,7 +23,6 @@ export default Route.extend(RealtimeRouteMixin, {
   //     users: this.store.query("user", { orderBy: "email" })
   //   }).then(res => {
   //     console.log(res);
-  //     return res;
   //   });
   // }
 
