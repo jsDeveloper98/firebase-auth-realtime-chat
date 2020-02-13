@@ -1,22 +1,22 @@
 <div class="private-chat-section">
     <div class="private-chat-section-cont container pt-3 pb-3">
-        <div class="private-chat-section-message">
-            <div id="messageBox" class="private-chat-section-message-box w-100 pt-2 pb-2 pl-4 pr-4">
+        <div class="private-chat-section-message rounded">
+            <div id="messageBox" class="private-chat-section-message-box w-100 pt-2 pb-5 pl-4 pr-4">
                 {{#each messages as |message|}}
                     <li class="message-title d-flex align-items-center">{{message.user}} : {{message.title}}</li>
                 {{/each}}
             </div>
             <div class="private-chat-section-send-box d-flex align-items-center w-100 pl-5 pr-5">
-                {{input autocomplete='off' key-up=(action 'addMessage') value=message placeholder='Write a message...' type="text"}}
+                {{input class='border-0 w-100 pl-3 pr-3' autocomplete='off' key-up=(action 'addMessage') value=message placeholder='Write a message...' type="text"}}
             </div>
         </div>
     </div>
     {{bs-button class='logout-btn position-absolute' defaultText="Logout" type="dark" onClick=(action "logout")}}
-    <div class="users-list">
+    <div class="users-list position-absolute d-flex align-items-center flex-column rounded">
         {{#each users as |user|}}
-            <div class="users-list-item">
+            <div class="users-list-item d-flex align-items-center w-100 pl-4 position-relative">
                 {{user.email}}
-                <span class="{{if user.online ' online'}}"></span>
+                <span class="{{if user.online ' online rounded-circle bg-success ml-auto mr-3'}}"></span>
             </div>
         {{/each}}
     </div>

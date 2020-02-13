@@ -20,7 +20,7 @@ li {
 
 .private-chat-section {
   min-height: calc(100vh - 56px);
-  background-color: #302e2e
+  background-color: #302e2e;
 }
 
 .private-chat-section-cont {
@@ -30,7 +30,6 @@ li {
 .private-chat-section-message {
   height: calc(100vh - 88px);
   background-color: #595757;
-  border-radius: 3px;
   color: #dedede;
 }
 
@@ -44,17 +43,13 @@ li {
   border-top: 1px solid #787878;
 }
 
-.private-chat-section-send-box input{
-  width: 100%;
+.private-chat-section-send-box input {
   height: 40px;
-  padding: 0 20px;
   background-color: #6e6e6e;
-  border: none;
-  outline: none;
   color: #dedede;
 }
 
-.private-chat-section-send-box input::placeholder{
+.private-chat-section-send-box input::placeholder {
   color: #b0b0b0;
 }
 
@@ -65,52 +60,36 @@ li {
 #messageBox {
   height: 100px;
   overflow-y: scroll;
-  padding-bottom: 50px !important;
 }
 
 .users-list {
-  position: absolute;
   right: 0;
   top: 72px;
   width: 300px;
   background-color: #595757;
   height: calc(100vh - 88px);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 3px
 }
 
 .users-list-item {
   color: #dedede;
   height: 40px;
-  width: 100%;
-  display: flex;
-  padding-left: 20px;
-  align-items: center;
   border-top: 1px solid #787878;
   border-bottom: 1px solid #787878;
   margin-bottom: -1px;
-  position: relative;
 }
 
 .online {
   width: 10px;
   height: 10px;
-  border-radius: 100%;
-  background-color: green;
-  position: absolute;
-  right: 10px;
-  top: 15px;
 }
 
 ::-webkit-scrollbar {
-    width: 0.9em;
+  width: 0.9em;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #787878;
-    outline: 1px solid #787878;
+  background-color: #787878;
+  outline: 1px solid #787878;
 }
 
 @media only screen and (max-width: 576px) {
@@ -121,6 +100,6 @@ li {
 
 @media only screen and (max-width: 1210px) {
   .users-list {
-    display: none;
+    display: none !important;
   }
 }
