@@ -30,21 +30,18 @@ li {
 .private-chat-section-message {
   height: calc(100vh - 88px);
   background-color: #595757;
-  border-radius: 2px;
+  border-radius: 3px;
   color: #dedede;
 }
 
 .private-chat-section-message-box {
   min-height: calc(100vh - 165px);
-  border-top: 1px solid #787878;
-  border-left: 1px solid #787878;
-  border-right: 1px solid #787878;
   word-break: break-all;
 }
 
 .private-chat-section-send-box {
   height: 77px;
-  border: 1px solid #787878;
+  border-top: 1px solid #787878;
 }
 
 .private-chat-section-send-box input{
@@ -81,7 +78,7 @@ li {
   display: flex;
   align-items: center;
   flex-direction: column;
-  border-radius: 2px
+  border-radius: 3px
 }
 
 .users-list-item {
@@ -89,7 +86,7 @@ li {
   height: 40px;
   width: 100%;
   display: flex;
-  padding-left: 30px;
+  padding-left: 20px;
   align-items: center;
   border-top: 1px solid #787878;
   border-bottom: 1px solid #787878;
