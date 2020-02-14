@@ -1,9 +1,10 @@
 import Route from "@ember/routing/route";
 import { inject as service } from "@ember/service";
 import RealtimeRouteMixin from "emberfire/mixins/realtime-route";
-// import RSVP from "rsvp";
+import { subscribe, unsubscribe } from 'emberfire/services/realtime-listener';
+import RSVP from "rsvp";
 
-export default Route.extend(RealtimeRouteMixin, {
+export default Route.extend({
   session: service(),
   store: service(),
 
@@ -13,18 +14,16 @@ export default Route.extend(RealtimeRouteMixin, {
     }
   },
 
-  model() {
-    return this.store.query("message", { orderBy: "title" });
-  }
-
   // model() {
-  //   return RSVP.hash({
-  //     messages: this.store.query("message", { orderBy: "title" }),
-  //     users: this.store.query("user", { orderBy: "email" })
-  //   }).then(res => {
-  //     console.log(res);
-  //   });
+  //   return this.store.query("message", { orderBy: "title" });
   // }
+
+  model() {
+    return RSVP.Promise.all([
+      this.store.query("message", { orderBy: "title" }),
+      this.store.query("user", { orderBy: "email" })
+    ]);
+  },
 
   // model() {
   //   return RSVP.Promise.all([
@@ -35,7 +34,18 @@ export default Route.extend(RealtimeRouteMixin, {
   //   });
   // }
 
-  // setupController(controller, model) {
-  //   controller.setProperties(model);
-  // }
+  setupController(controller, model) {
+    controller.setProperties(model);
+  },
+
+  afterModel([messages, users]) {
+    subscribe(this, messages);
+    subscribe(this, users);
+    return this._super(...arguments);
+  },
+
+  deactivate() {
+    unsubscribe(this);
+    return this._super();
+  }
 });
