@@ -1,25 +1,48 @@
 <div class="private-chat-section">
     <div class="private-chat-section-cont container pt-3 pb-3">
         <div class="private-chat-section-message rounded">
-            <div id="messageBox" class="private-chat-section-message-box w-100 pt-2 pb-5 pl-4 pr-4">
-                {{#each messages as |message|}}
-                    <li class="message-title d-flex align-items-center">{{message.user}} : {{message.title}}</li>
+            <div id="messageBox" class="private-chat-section-message-box text-light w-100 pt-2 pb-2 pl-4 pr-4">
+                {{#each model.messages as |message|}}
+                    <li class="message-item d-flex align-items-center position-relative pr-4">
+                        {{message.user}}
+                        --->
+                        {{message.title}}
+                        <span class="remove-message position-absolute text-danger d-none"
+                            {{action 'showConfModal' message}}>✘</span>
+                        {{#if message.showConfirmation}}
+                            {{#click-outside action=(action (mut message.showConfirmation) false)}}
+                                <div class="confirmation position-absolute bg-dark pt-3 pb-3 pl-4 pr-4 rounded">
+                                    <span class=" text">Delete message?</span>
+                                    <div class="answer d-flex mt-3">
+                                        <div class="answer-yes d-flex align-items-lg-center justify-content-center bg-danger rounded-pill"
+                                            {{action 'removeMessage' message}}>
+                                            Yes</div>
+                                        <div class="answer-no d-flex align-items-lg-center justify-content-center bg-success ml-3 rounded-pill"
+                                            {{action 'hideConfModal' message}}>
+                                            No</div>
+                                    </div>
+                                    <div class="confirmation-tool position-absolute bg-dark"></div>
+                                </div>
+                            {{/click-outside}}
+                        {{/if}}
+                    </li>
                 {{/each}}
             </div>
             <div class="private-chat-section-send-box d-flex align-items-center w-100 pl-5 pr-5">
-                {{input class='border-0 w-100 pl-3 pr-3' autocomplete='off' key-up=(action 'addMessage') value=message placeholder='Write a message...' type="text"}}
+                {{input class='border-0 w-100 pl-3 pr-3 text-light' autocomplete='off' key-up=(action 'addMessage') value=message placeholder='Write a message...' type="text"}}
             </div>
         </div>
     </div>
     {{bs-button class='logout-btn position-absolute' defaultText="Logout" type="dark" onClick=(action "logout")}}
-    <div class="users-list position-absolute d-flex align-items-center flex-column rounded">
-        {{#each users as |user|}}
-            <div class="users-list-item d-flex align-items-center w-100 pl-4 position-relative">
-                {{user.email}}
+    <div id="usersList" class="users-list position-absolute d-flex align-items-center flex-column rounded">
+        {{#each model.users as |user|}}
+            <div class="users-list-item text-light d-flex align-items-center w-100 pl-4 position-relative">
+                <span class="username">{{user.userName}}</span>
                 <span class="{{if user.online ' online rounded-circle bg-success ml-auto mr-3'}}"></span>
             </div>
         {{/each}}
     </div>
 </div>
+
 
 {{outlet}}

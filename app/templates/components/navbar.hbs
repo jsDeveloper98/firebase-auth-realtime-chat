@@ -1,5 +1,5 @@
-<BsNavbar @type="dark" @backgroundColor="dark" @collapsed={{true}} @onCollapse={{action (mut collapsed) true}}
-    @onExpand={{action (mut collapsed) false}} as |navbar|>
+<BsNavbar class="navbar-background-color" @type="dark" @backgroundColor="dark" @collapsed={{true}}
+    @onCollapse={{action (mut collapsed) true}} @onExpand={{action (mut collapsed) false}} as |navbar|>
     <div class="navbar-header">
         {{navbar.toggle}}
         {{#link-to "index" class="navbar-brand"}}Realtime Chat{{/link-to}}

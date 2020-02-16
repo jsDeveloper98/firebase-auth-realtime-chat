@@ -5,16 +5,6 @@ export default Controller.extend({
   message: "",
   session: service(),
   store: service(),
-  currentUser: service(),
-  firebaseApp: service(),
-
-  init() {
-    this._super(...arguments);
-    const messages = this.get("store").findAll("message");
-    this.set("messages", messages);
-    const users = this.get("store").findAll("user");
-    this.set("users", users);
-  },
 
   actions: {
     logout() {
@@ -35,12 +25,30 @@ export default Controller.extend({
         const message = this.get("store").createRecord("message", {
           title: this.get("message")
         });
-        message.set("user", this.get("currentUser.user"));
-        message.save();
+        this.get("store")
+          .findRecord("user", this.get("session.data.authenticated.user.uid"))
+          .then(res => {
+            message.set("user", res.userName);
+            message.save();
+          });
         this.set("message", "");
-        const messageBox = document.getElementById("messageBox");
-        messageBox.scrollTop = messageBox.scrollHeight;
+        setTimeout(() => {
+          const messageBox = document.getElementById("messageBox");
+          messageBox.scrollTop = messageBox.scrollHeight;
+        });
       }
+    },
+    showConfModal(message) {
+      message.set("showConfirmation", true);
+      message.save();
+    },
+    hideConfModal(message) {
+      message.set("showConfirmation", false);
+      message.save();
+    },
+    removeMessage(message) {
+      message.destroyRecord();
+      message.save();
     }
   }
 });

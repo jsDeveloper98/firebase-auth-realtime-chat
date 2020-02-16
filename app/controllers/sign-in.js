@@ -3,12 +3,11 @@ import { inject as service } from "@ember/service";
 import RSVP from "rsvp";
 
 export default Controller.extend({
+  emailValue: "",
+  passwordValue: "",
   session: service(),
   firebaseApp: service(),
   store: service(),
-  currentUser: service(),
-  emailValue: "",
-  passwordValue: "",
 
   init() {
     this._super(...arguments);

@@ -7,6 +7,7 @@ export default Controller.extend({
   session: service(),
   emailValue: "",
   passwordValue: "",
+  userNameValue: "",
 
   signUp(emailValue, passwordValue) {
     this.get("firebaseApp")
@@ -17,11 +18,13 @@ export default Controller.extend({
           .then(res => {
             const user = this.get("store").createRecord("user", {
               email: res.user.email,
+              userName: this.get("userNameValue"),
               online: false
             });
             user.set("id", res.user.uid);
             user.save();
             this.set("emailValue", "");
+            this.set("userNameValue", "");
             this.set("passwordValue", "");
           });
       })
